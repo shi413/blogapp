@@ -30,7 +30,8 @@ app.post("/RegisterUser",async(req,res)=>{
             name:req.body.name,
             email:req.body.email,
             password:req.body.password,
-            mobile:req.body.mobile
+            mobile:req.body.mobile,
+            userpic:"localhost:4000/uploads/"+req.file.filename
         })
         await users.save()
         res.send({success:true,message:"Registered Successfully",data:users})

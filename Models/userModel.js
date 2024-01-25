@@ -3,7 +3,8 @@ const userSchema  = new mongoose.Schema({
     name:String,
     email:String,
     password:String,
-    mobile:String
+    mobile:String,
+    userpic:String
 },{timestamps:true})
 
 const userModel = new mongoose.model("userModel",userSchema)
