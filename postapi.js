@@ -1,5 +1,5 @@
 const express = require('express')
-const {blogModel} = require('./blogModel')
+const {blogModel} = require('./Models/blogModel')
 const multer = require('multer')
 const cors = require('cors')
 const app = express()
@@ -32,8 +32,18 @@ app.post("/Add",async(req,res)=>{
     // const data = await new blogModel(req.body)
     // const result = await data.save();
     // res.status(201).send({success:true,message:'Data Added',data:result})
-}).listen(12345)
+})
 
+
+app.get('/', async(req,res)=>{
+    let data = await blogModel.find()
+    res.send(data)
+})
+app.put("/UpdateData",async(req,res)=>{
+    const data = await studentModel.updateOne({rollno:req.body.rollno},{$set:{name:req.body.name}})
+    res.status(201).send({success:true,message:'Updated',data:data})
+})
+app.listen(12345)
 
 
 
